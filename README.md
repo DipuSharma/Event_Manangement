@@ -1,13 +1,15 @@
- _____  _                   _____ _                           
-|  __ \(_)                 / ____| |                          
-| |  | |_ _ __  _   _    | (___ | |__   __ _ _ __ _ __ ___   __ _ 
+```
+ _____ _                   _____ _
+|  __ \(_)                 / ____| |
+| |  | |_ _ __  _   _    | (___ | |__   __ _ _ __ _ __ ___   __ _
 | |  | | | '_ \| | | |    \___ \| '_ \ / _` | '__| '_ ` _ \ / _` |
 | |__| | | |_) | |_| |    ____) | | | | (_| | |  | | | | | | (_| |
 |_____/|_| .__/ \__,_|   |_____/|_| |_|\__,_|_|  |_| |_| |_|\__,_|
-         | |                                                   
-         |_|                                                   
+         | |
+         |_|
+```
 
-                    Developer: Dipu Sharma
+                     Developer: Dipu Sharma
 
 # Event Management System
 
@@ -85,11 +87,10 @@ python main.py
 
 # Start Celery worker (in a separate terminal)
 celery -A src.worker.celery_worker worker --loglevel=info
-```
 
 # Start Celery Beat(in a separate terminal)
-
 celery -A src.worker.celery_worker beat --loglevel=info
+```
 
 ## API Documentation
 
