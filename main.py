@@ -7,6 +7,7 @@ from src.api.event import router as event_router
 from src.api.auth import router as auth_router
 from src.api.attendee import router as attendee_router
 from src.configuration.db_setting import init_db
+from src.worker.celery_worker import celery_app
 
 
 app = FastAPI(

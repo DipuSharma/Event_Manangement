@@ -10,9 +10,6 @@ class AttendeeBase(BaseModel):
         default=None, description="Last name of the attendee"
     )
     email: Optional[str] = Field(default=None, description="Email of the attendee")
-    password: Optional[str] = Field(
-        default=None, description="Password of the attendee"
-    )
     phone_number: Optional[str] = Field(
         default=None, description="Phone number of the attendee"
     )
@@ -39,3 +36,6 @@ class AttendeeDisplay(AttendeeBase):
     user_type: str = Field(default=None, description="User type")
     pass
 
+
+class CheckInResponse(BaseModel):
+    message: str

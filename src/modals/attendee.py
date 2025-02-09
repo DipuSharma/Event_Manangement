@@ -10,7 +10,7 @@ class Attendee(Base):
     first_name = Column(String, nullable=True)
     last_name = Column(String, nullable=True)
     email = Column(String, unique=True, nullable=False)
-    password = Column(String, nullable=False)
+    password = Column(String, nullable=True)
     phone_number = Column(String, nullable=True)
     event_id = Column(Integer, ForeignKey("events.event_id"), nullable=True)
     check_in_status = Column(Boolean, default=True)
