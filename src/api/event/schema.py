@@ -1,6 +1,7 @@
 from pydantic import BaseModel, Field
 from typing import Optional
 from datetime import datetime
+from src.utils.enums import EventStatus
 
 
 class EventBase(BaseModel):
@@ -61,3 +62,16 @@ class EventUpdate(EventBase):
 class EventDisplay(EventBase):
     event_id: int = Field(..., description="Event id")
     pass
+
+
+class EventFilters(BaseModel):
+    status: Optional[EventStatus] = Field(
+        default=None, description="Status of the event"
+    )
+    location: Optional[str] = Field(default=None, description="Location of the event")
+    start_date: Optional[datetime] = Field(
+        default=None, description="Start date of the event"
+    )
+    end_date: Optional[datetime] = Field(
+        default=None, description="End date of the event"
+    )

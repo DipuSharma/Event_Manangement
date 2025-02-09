@@ -39,3 +39,15 @@ class AttendeeDisplay(AttendeeBase):
 
 class CheckInResponse(BaseModel):
     message: str
+
+
+class AttendeeFilter(BaseModel):
+    event_id: Optional[int] = Field(
+        default=None, description="Event id of the attendee"
+    )
+    first_name: Optional[str] = Field(default=None, description="Name of the attendee")
+    last_name: Optional[str] = Field(default=None, description="Name of the attendee")
+    email: Optional[str] = Field(default=None, description="Email of the attendee")
+    check_in_status: Optional[bool] = Field(
+        default=None, description="Check in status of the attendee"
+    )

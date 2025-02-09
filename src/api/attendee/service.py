@@ -77,8 +77,36 @@ async def get_attendee(id: int, db: Session):
     return AttendeeDisplay.from_orm(attendee), "Attendee fetched successfully"
 
 
-async def get_attendees(db: Session):
-    attendees = db.query(Attendee).all()
+async def get_attendees(
+    db: Session,
+    event_id=None,
+    email=None,
+    first_name=None,
+    last_name=None,
+    check_in_status=None,
+):
+    db_query = db.query(Attendee)
+    if event_id:
+        db_query = db_query.filter(Attendee.event_id == event_id)
+    if email:
+        db_query = db_query.filter(Attendee.email.ilike(f"%{email}%"))
+    if first_name:
+        db_query = db_query.filter(
+            or_(
+                Attendee.first_name.ilike(f"%{first_name}%"),
+                Attendee.last_name.ilike(f"%{first_name}%"),
+            )
+        )
+    if last_name:
+        db_query = db_query.filter(
+            or_(
+                Attendee.first_name.ilike(f"%{last_name}%"),
+                Attendee.last_name.ilike(f"%{last_name}%"),
+            )
+        )
+    if check_in_status:
+        db_query = db_query.filter(Attendee.check_in_status == check_in_status)
+    attendees = db_query.all()
     return [
         AttendeeDisplay.from_orm(attendee) for attendee in attendees
     ], "Attendees fetched successfully"
