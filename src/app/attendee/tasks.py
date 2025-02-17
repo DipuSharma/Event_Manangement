@@ -2,7 +2,7 @@ import logging
 from src.worker.celery_worker import celery_app
 from src.modals.attendee import Attendee
 from src.modals.event import Event, EventStatus
-from src.api.attendee.schema import AttendeeUpdate, CheckInResponse
+from src.app.attendee.schema import AttendeeUpdate, CheckInResponse
 from pydantic import BaseModel
 from datetime import datetime
 from src.configuration.db_setting import SessionLocal

@@ -1,4 +1,4 @@
-from src.api.auth.schema import UserDisplay, UserLogin
+from src.app.auth.schema import UserDisplay, UserLogin
 from src.utils.common import EncryptedPassword as _password
 from sqlalchemy.orm import Session
 from src.configuration.db_setting import SessionLocal
@@ -8,7 +8,7 @@ from fastapi.security import HTTPBearer, HTTPAuthorizationCredentials
 from datetime import datetime, timezone, timedelta
 from src.configuration.settings import setting
 from src.modals.attendee import Attendee
-from src.api.auth.schema import UserRegister, TokenResponse, UserDisplay
+from src.app.auth.schema import UserRegister, TokenResponse, UserDisplay
 from src.utils.enums import UserType
 
 JWT_SECRET = setting.SECRET_KEY

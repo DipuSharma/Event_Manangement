@@ -7,6 +7,7 @@ load_dotenv()
 
 class Settings:
     TITLE = os.getenv("TITLE")
+    DEBUG = os.getenv("DEBUG")
     ALGORITHM = os.getenv("ALGO")
     HOST_URL = os.getenv("HOST_URL")
     HOST_PORT = os.getenv("HOST_PORT")

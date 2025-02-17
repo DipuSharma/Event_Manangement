@@ -1,9 +1,9 @@
 from fastapi import APIRouter, Depends, File, UploadFile
-from src.api.attendee.schema import AttendeeCreate, AttendeeUpdate, AttendeeFilter
-from src.api.attendee import service as attendee_service
+from src.app.attendee.schema import AttendeeCreate, AttendeeUpdate, AttendeeFilter
+from src.app.attendee import service as attendee_service
 from src.configuration.db_setting import get_db
 from sqlalchemy.orm import Session
-from src.api.auth.service import get_current_user
+from src.app.auth.service import get_current_user
 from src.utils.response import ResponseModel
 
 router = APIRouter()

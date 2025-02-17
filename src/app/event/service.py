@@ -1,5 +1,5 @@
 from src.modals.event import Event
-from src.api.event.schema import EventDisplay
+from src.app.event.schema import EventDisplay
 from src.utils.enums import EventStatus
 
 

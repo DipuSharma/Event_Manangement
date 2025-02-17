@@ -1,7 +1,7 @@
 from fastapi import APIRouter, Depends
-from src.api.auth import service as auth_service
-from src.api.auth.service import get_current_user
-from src.api.auth.schema import UserLogin, UserRegister
+from src.app.auth import service as auth_service
+from src.app.auth.service import get_current_user
+from src.app.auth.schema import UserLogin, UserRegister
 from src.configuration.db_setting import get_db
 from sqlalchemy.orm import Session
 
@@ -22,6 +22,3 @@ async def register(paylaod: UserRegister, db: Session = Depends(get_db)):
     return response
 
 
-@router.post("/logout")
-def logout():
-    pass

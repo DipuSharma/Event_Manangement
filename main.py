@@ -3,17 +3,17 @@ from fastapi import FastAPI
 from fastapi.staticfiles import StaticFiles
 from fastapi.middleware.cors import CORSMiddleware
 from src.configuration.settings import setting
-from src.api.event import router as event_router
-from src.api.auth import router as auth_router
-from src.api.attendee import router as attendee_router
+from src.app.event import router as event_router
+from src.app.auth import router as auth_router
+from src.app.attendee import router as attendee_router
 from src.configuration.db_setting import init_db
 from src.worker.celery_worker import celery_app
 
 
 app = FastAPI(
     title=setting.TITLE,
-    docs_url="/event",
-    debug=True,
+    docs_url="/event" if setting.DEBUG else None,
+    debug=setting.DEBUG,
 )
 
 origins = ["0.0.0.0"]

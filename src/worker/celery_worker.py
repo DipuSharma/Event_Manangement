@@ -20,11 +20,11 @@ celery_app.conf.update(
 # Define periodic tasks using Celery Beat
 celery_app.conf.beat_schedule = {
     "delete-inactive-companies": {
-        "task": "src.api.event.tasks.status_changed_event",
+        "task": "src.app.event.tasks.status_changed_event",
         "schedule": crontab(minute="*"),
     },
     "update-event-statuses": {
-        "task": "src.api.attendee.tasks.auto_update_event_status",
+        "task": "src.app.attendee.tasks.auto_update_event_status",
         "schedule": crontab(minute="*"),
     },
 }
@@ -32,7 +32,7 @@ celery_app.conf.beat_schedule = {
 # Load tasks from all modules in the application
 celery_app.autodiscover_tasks(
     [
-        "src.api.event.tasks",
-        "src.api.attendee.tasks",
+        "src.app.event.tasks",
+        "src.app.attendee.tasks",
     ]
 )

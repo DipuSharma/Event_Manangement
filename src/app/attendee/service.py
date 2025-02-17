@@ -1,14 +1,13 @@
 from sqlalchemy.orm import Session
 from src.modals.attendee import Attendee
-from src.api.attendee.schema import AttendeeDisplay, AttendeeCreate, AttendeeUpdate
+from src.app.attendee.schema import AttendeeDisplay, AttendeeCreate, AttendeeUpdate
 from src.modals.event import Event, EventStatus
 from src.utils.enums import UserType
 from sqlalchemy import and_, any_, func, or_
 from src.utils.common import EncryptedPassword as _password
-from src.api.attendee.tasks import check_in_attendee_task
+from src.app.attendee.tasks import check_in_attendee_task
 import csv
 import io
-import re
 from fastapi import HTTPException
 
 
@@ -17,13 +16,13 @@ async def create_attendee(payload: AttendeeCreate, db: Session):
         db.query(Event)
         .filter(
             and_(
-                Event.event_id == payload.event_id, Event.status != EventStatus.CANCELED
+                Event.event_id == payload.event_id, Event.status != EventStatus.CANCELED, Event.status !=EventStatus.COMPLETED
             )
         )
         .first()
     )
     if not get_event:
-        return {"message": "Event does not exist"}
+        return {"status": False}, 'Event is over or canceled'
     current_attendees_count = (
         db.query(Attendee).filter(Attendee.event_id == payload.event_id).count()
     )
