@@ -1,3 +1,5 @@
+import io
+import csv
 from sqlalchemy.orm import Session
 from src.modals.attendee import Attendee
 from src.app.attendee.schema import AttendeeDisplay, AttendeeCreate, AttendeeUpdate
@@ -6,8 +8,6 @@ from src.utils.enums import UserType
 from sqlalchemy import and_, any_, func, or_
 from src.utils.common import EncryptedPassword as _password
 from src.app.attendee.tasks import check_in_attendee_task
-import csv
-import io
 from fastapi import HTTPException
 
 
